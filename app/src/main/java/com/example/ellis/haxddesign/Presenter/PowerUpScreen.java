@@ -28,6 +28,24 @@ public class PowerUpScreen extends AppCompatActivity {
                 //terminate on use
             }
         });
+        locateUse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //locate on use
+            }
+        });
+        slowUse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //slow on use
+            }
+        });
+        buttonback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     private void wireWidgets() {
