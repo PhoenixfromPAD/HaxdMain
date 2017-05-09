@@ -5,8 +5,11 @@ package com.example.ellis.haxddesign.Model;
  */
 
 public class PowerUp {
+    private String name;
+    private long cooldown;
 
-    public PowerUp() {
-
+    public PowerUp(String name ,long cooldown) {
+        this.name = name;
+        this.cooldown = cooldown;
     }
 }

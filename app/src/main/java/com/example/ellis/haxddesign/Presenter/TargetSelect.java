@@ -1,7 +1,8 @@
 package com.example.ellis.haxddesign.Presenter;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
@@ -20,7 +21,9 @@ public class TargetSelect extends AppCompatActivity {
         findTarget.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Move to hacker Activity
+                Intent i = new Intent(TargetSelect.this, HackerActivity.class);
+                startActivity(i);
+                finish();
             }
         });
     }
