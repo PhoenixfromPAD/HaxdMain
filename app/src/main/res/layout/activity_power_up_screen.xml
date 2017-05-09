@@ -15,5 +15,85 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="40dp"
         android:text="Pause Hack"
-        android:textSize="25sp"/>
+        android:textColor="@color/black"
+        android:textSize="25sp" />
+
+    <Button
+        android:id="@+id/buttonPauseUse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="75dp"
+        android:layout_marginTop="30dp"
+        android:layout_toEndOf="@+id/textViewTerminate"
+        android:text="Use" />
+
+    <TextView
+        android:id="@+id/textViewTerminate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textViewPause"
+        android:layout_below="@+id/buttonPauseUse"
+        android:layout_marginTop="40dp"
+        android:text="Terminate Hack"
+        android:textColor="@color/black"
+        android:textSize="25sp" />
+
+    <Button
+        android:id="@+id/buttonTerminateUse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textViewTerminate"
+        android:layout_alignBottom="@+id/textViewTerminate"
+        android:layout_alignStart="@+id/buttonPauseUse"
+        android:text="Use" />
+
+    <TextView
+        android:id="@+id/textViewLocate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Locate Hacker"
+        android:textSize="25sp"
+        android:textColor="@color/black"
+        android:layout_alignBaseline="@+id/buttonLocateUse"
+        android:layout_alignBottom="@+id/buttonLocateUse"
+        android:layout_alignStart="@+id/textViewTerminate" />
+
+    <Button
+        android:id="@+id/buttonLocateUse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/buttonTerminateUse"
+        android:layout_below="@+id/buttonTerminateUse"
+        android:layout_marginTop="41dp"
+        android:text="Use" />
+
+    <TextView
+        android:id="@+id/textViewSlowHack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textViewLocate"
+        android:layout_below="@+id/buttonLocateUse"
+        android:layout_marginTop="50dp"
+        android:text="Slow Hack"
+        android:textSize="25sp"
+        android:textColor="@color/black"/>
+
+    <Button
+        android:id="@+id/buttonSlowUse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/buttonLocateUse"
+        android:layout_below="@+id/buttonLocateUse"
+        android:layout_marginTop="40dp"
+        android:text="Use" />
+
+    <Button
+        android:id="@+id/buttonBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonSlowUse"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="78dp"
+        android:text="Back" />
 </RelativeLayout>
