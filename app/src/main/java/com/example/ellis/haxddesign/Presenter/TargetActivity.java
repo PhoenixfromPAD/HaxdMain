@@ -1,10 +1,12 @@
 package com.example.ellis.haxddesign.Presenter;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -18,6 +20,7 @@ public class TargetActivity extends AppCompatActivity {
     private TextView progress;
     private ProgressBar download;
     private int prog;
+    private Button powerUp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,10 +56,18 @@ public class TargetActivity extends AppCompatActivity {
                 snackbar.show();
             }
         }.start();
+        powerUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(TargetActivity.this, PowerUpScreen.class);
+                startActivity(i);
+            }
+        });
     }
 
     private void wireWidgets() {
         progress = (TextView) findViewById(R.id.textViewProgressTarget);
         download = (ProgressBar) findViewById(R.id.progressBarTarget);
+        powerUp = (Button) findViewById(R.id.buttonPowerup);
     }
 }
