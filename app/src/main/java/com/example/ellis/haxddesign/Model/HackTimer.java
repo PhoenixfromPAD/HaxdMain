@@ -9,16 +9,17 @@ import android.util.Log;
 public class HackTimer {
 
     private Thread thread;
-    private int progress, currentTime;
+    private int progress, currentTime, timeToFinish;
 
     public HackTimer() {
         progress = 0;
         currentTime = 0;
+        timeToFinish = 100;
         thread = new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
-                    for(int i = currentTime; i < 100; i++){
+                    for(int i = currentTime; i < timeToFinish; i++){
                         thread.sleep(1000);
                         progress++;
                         currentTime++;
@@ -40,5 +41,14 @@ public class HackTimer {
         thread.interrupt();
         thread.sleep(5000);
         thread.start();
+    }
+
+    public void stopTimer(){
+        thread.interrupt();
+    }
+
+    public void slowTimer(){
+        timeToFinish *= 2;
+        currentTime *= 2;
     }
 }
