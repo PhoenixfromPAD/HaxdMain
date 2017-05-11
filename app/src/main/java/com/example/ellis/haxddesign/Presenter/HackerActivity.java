@@ -23,7 +23,7 @@ public class HackerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hacker);
-        Backendless.initApp("73B8E514-FB28-B17E-FF84-3BF6B88BD000",
+        Backendless.initApp(this, "73B8E514-FB28-B17E-FF84-3BF6B88BD000",
                 "929DA8BC-4FDE-CFAF-FF66-0B4B156DCB00", "v1");
 
         Game game = new Game();

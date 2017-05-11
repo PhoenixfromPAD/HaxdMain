@@ -10,6 +10,8 @@ public class Player {
     //Hack/Caught Ratio
     private int hcr;
     private ArrayList<PowerUp> powers = new ArrayList<>();
+    public String objectId;
+    public String ownerId;
 
     public Player() {
         hcr = 0;
