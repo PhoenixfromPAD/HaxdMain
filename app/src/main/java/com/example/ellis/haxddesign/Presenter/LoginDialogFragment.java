@@ -10,9 +10,6 @@ import android.view.LayoutInflater;
 import android.widget.EditText;
 
 import com.backendless.Backendless;
-import com.backendless.BackendlessUser;
-import com.backendless.async.callback.AsyncCallback;
-import com.backendless.exceptions.BackendlessFault;
 import com.example.ellis.haxddesign.R;
 
 /**
@@ -22,6 +19,7 @@ import com.example.ellis.haxddesign.R;
 public class LoginDialogFragment extends DialogFragment{
 
     private EditText emailET, passwordET;
+    private String email, password;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -39,24 +37,15 @@ public class LoginDialogFragment extends DialogFragment{
                 .setPositiveButton("Log In", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
-                        // sign in the user ...
-                        Backendless.UserService.login(emailET.getText().toString().trim(), passwordET.getText().toString().trim(), new AsyncCallback<BackendlessUser>() {
-                            @Override
-                            public void handleResponse(BackendlessUser response) {
-
-                            }
-
-                            @Override
-                            public void handleFault(BackendlessFault fault) {
-
-                            }
-                        });
+                        email = emailET.getText().toString().trim();
+                        password = passwordET.getText().toString().trim();
+                        mListener.onDialogPositiveClick(LoginDialogFragment.this);
                     }
                 })
                 .setNegativeButton("Register", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
+                        mListener.onDialogNegativeClick(LoginDialogFragment.this);
                     }
                 });
         emailET = (EditText) getActivity().findViewById(R.id.dialogLogin_editText_email);
@@ -69,8 +58,8 @@ public class LoginDialogFragment extends DialogFragment{
      * implement this interface in order to receive event callbacks.
      * Each method passes the DialogFragment in case the host needs to query it. */
     public interface LoginDialogListener {
-        public void onDialogPositiveClick(DialogFragment dialog);
-        public void onDialogNegativeClick(DialogFragment dialog);
+        public void onDialogPositiveClick(LoginDialogFragment dialog);
+        public void onDialogNegativeClick(LoginDialogFragment dialog);
     }
 
     // Use this instance of the interface to deliver action events
@@ -89,6 +78,13 @@ public class LoginDialogFragment extends DialogFragment{
             throw new ClassCastException(context.toString()
                     + " must implement NoticeDialogListener");
         }
+    }
+
+    public String getEmail()  {
+        return email;
+    }
+    public String getPassword()  {
+        return password;
     }
 
 }
