@@ -18,7 +18,8 @@
         <activity android:name=".Presenter.HackerActivity" />
         <activity android:name=".Presenter.TargetSelect" />
         <activity android:name=".Presenter.TargetActivity" />
-        <activity android:name=".Presenter.PowerUpScreen"></activity>
+        <activity android:name=".Presenter.PowerUpScreen" />
+        <activity android:name=".Presenter.RegisterActivity"></activity>
     </application>
 
 </manifest>
