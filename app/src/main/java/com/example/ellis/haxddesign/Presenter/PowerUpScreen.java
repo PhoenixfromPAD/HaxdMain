@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.ellis.haxddesign.Model.HackTimer;
+import com.example.ellis.haxddesign.Model.PauseHack;
 import com.example.ellis.haxddesign.R;
 
 public class PowerUpScreen extends AppCompatActivity {
@@ -15,11 +17,13 @@ public class PowerUpScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_power_up_screen);
         wireWidgets();
+        final PauseHack pauseHack = new PauseHack();
+        final HackTimer hackTimer = new HackTimer();
 
         pauseUse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //pause on use
+                pauseHack.onUse(hackTimer);
             }
         });
         terminateUse.setOnClickListener(new View.OnClickListener() {
