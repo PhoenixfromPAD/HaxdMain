@@ -1,6 +1,5 @@
 package com.example.ellis.haxddesign.Presenter;
 
-import android.app.DialogFragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -15,9 +14,8 @@ import com.backendless.exceptions.BackendlessFault;
 import com.example.ellis.haxddesign.Model.Player;
 import com.example.ellis.haxddesign.R;
 
-public class MainScreen extends AppCompatActivity implements View.OnClickListener, LoginDialogFragment.LoginDialogListener{
+public class MainScreen extends AppCompatActivity implements View.OnClickListener{
     private Button start;
-    private DialogFragment newFragment;
     private BackendlessUser user;
     Player player;
     @Override
@@ -26,11 +24,38 @@ public class MainScreen extends AppCompatActivity implements View.OnClickListene
         setContentView(R.layout.activity_main_screen);
         Backendless.initApp(this, "73B8E514-FB28-B17E-FF84-3BF6B88BD000",
                 "929DA8BC-4FDE-CFAF-FF66-0B4B156DCB00", "v1");
-        user = Backendless.UserService.CurrentUser();
-        player = (Player) user.getProperty("player");
+        user = null;
+        //TODO Remove
+        Backendless.UserService.login("rbruner360@gmail.com", "12345", new AsyncCallback<BackendlessUser>() {
+            @Override
+            public void handleResponse(BackendlessUser response) {
+                Toast.makeText(MainScreen.this, "Logged In", Toast.LENGTH_SHORT).show();
+                user = Backendless.UserService.CurrentUser();
+            }
 
-        newFragment = new LoginDialogFragment();
-        //newFragment.show(getFragmentManager(), "Log In");
+            @Override
+            public void handleFault(BackendlessFault fault) {
+                Toast.makeText(MainScreen.this, ""+fault.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        user = Backendless.UserService.CurrentUser();
+        player = new Player();
+        player.busy = false;
+        player.hcr = 0;
+        player.user = user;
+        Backendless.Data.of(Player.class).save(player, new AsyncCallback<Player>() {
+            @Override
+            public void handleResponse(Player response) {
+                Toast.makeText(MainScreen.this, "Player made", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void handleFault(BackendlessFault fault) {
+                Toast.makeText(MainScreen.this, "PLayer Not Made", Toast.LENGTH_SHORT).show();
+            }
+        });
+
         wireWidgets();
     }
 
@@ -52,25 +77,4 @@ public class MainScreen extends AppCompatActivity implements View.OnClickListene
     }
 
 
-    @Override
-    public void onDialogPositiveClick(DialogFragment dialog, String email, String password) {
-        Backendless.UserService.login(email, password, new AsyncCallback<BackendlessUser>() {
-            @Override
-            public void handleResponse(BackendlessUser response) {
-                Toast.makeText(MainScreen.this, "Logged In", Toast.LENGTH_SHORT).show();
-                newFragment.dismiss();
-            }
-
-            @Override
-            public void handleFault(BackendlessFault fault) {
-                Toast.makeText(MainScreen.this, ""+fault.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    @Override
-    public void onDialogNegativeClick(DialogFragment dialog) {
-        startActivity(new Intent(this, RegisterActivity.class));
-        newFragment.dismiss();
-    }
 }

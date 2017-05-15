@@ -2,24 +2,28 @@ package com.example.ellis.haxddesign.Model;
 
 import com.backendless.BackendlessUser;
 
-import java.util.ArrayList;
-
 /**
  * Created by Ellis on 5/3/2017.
  */
 
 public class Player {
     //Hack/Caught Ratio
-    private int hcr;
-    private ArrayList<PowerUp> powers = new ArrayList<>();
-    private boolean busy;
-    private BackendlessUser user;
+    public int hcr;
+    //private ArrayList<PowerUp> powers = new ArrayList<>();
+    public boolean busy;
+    public BackendlessUser user;
+    public String name;
     public String objectId;
     public String ownerId;
 
     public Player() {
         hcr = 0;
-        getLocation();
+        busy = false;
+    }
+    public Player(String name) {
+        hcr = 0;
+        this.name = name;
+        busy = false;
     }
 
     private void getLocation() {
