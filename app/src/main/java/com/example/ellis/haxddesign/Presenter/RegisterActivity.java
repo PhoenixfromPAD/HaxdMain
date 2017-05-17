@@ -80,6 +80,17 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     player.user = user;
                     player.name = username;
                     user.setProperty("player", player);
+                    Backendless.Persistence.of(Player.class).save((Player) user.getProperty("player"), new AsyncCallback<Player>() {
+                        @Override
+                        public void handleResponse(Player response) {
+                            Toast.makeText(RegisterActivity.this, "Player Made", Toast.LENGTH_SHORT).show();
+                        }
+
+                        @Override
+                        public void handleFault(BackendlessFault fault) {
+                            Toast.makeText(RegisterActivity.this, ""+fault.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 }
 
                 @Override
