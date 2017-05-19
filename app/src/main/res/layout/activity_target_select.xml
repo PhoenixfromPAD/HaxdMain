@@ -10,12 +10,9 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.ellis.haxddesign.Presenter.TargetSelect">
 
-    <Button
-        android:text="Find A Target"
-        android:layout_width="300dp"
-        android:layout_height="100dp"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/buttonFindTarget"
-        android:textSize="30sp"/>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/player_list_container"
+        android:focusable="false"/>
 </RelativeLayout>

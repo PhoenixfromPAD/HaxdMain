@@ -56,8 +56,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void register() {
-        if(emailET.getText().toString().trim() == null && usernameET.getText().toString().trim() == null &&
-                passwordET.getText().toString().trim() == null && passwordConfirmET.getText().toString().trim() == null) {
+        if(emailET.getText() == null || usernameET.getText() == null ||
+                passwordET.getText() == null || passwordConfirmET.getText() == null) {
             Toast.makeText(this, "Empty Fields!", Toast.LENGTH_SHORT).show();
         } else if (!passwordET.getText().toString().trim().equals(passwordConfirmET.getText().toString().trim())) {
             Toast.makeText(this, "Passwords Don't Match", Toast.LENGTH_SHORT).show();
@@ -79,11 +79,13 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     player.hcr = 0;
                     player.user = user;
                     player.name = username;
+                    player.ownerId = user.getObjectId();
                     user.setProperty("player", player);
                     Backendless.Persistence.of(Player.class).save((Player) user.getProperty("player"), new AsyncCallback<Player>() {
                         @Override
                         public void handleResponse(Player response) {
                             Toast.makeText(RegisterActivity.this, "Player Made", Toast.LENGTH_SHORT).show();
+                            finish();
                         }
 
                         @Override

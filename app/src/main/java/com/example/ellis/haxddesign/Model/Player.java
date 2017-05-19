@@ -53,4 +53,12 @@ public class Player {
     public void setUser(BackendlessUser user) {
         this.user = user;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }
